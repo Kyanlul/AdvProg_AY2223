@@ -51,13 +51,13 @@ bool isCharInWord(const char ch, const string& word)
 {
 	for (auto x : word)
 	{
-		if (x != ch)
+		if (x == ch)
 		{
-			return 0;
+			return true;
 		}
 	}
     // TODO: return true if ch is in word else return false
-    return 1;
+    return false;
 }
 
 /***
@@ -169,11 +169,7 @@ void processData(const char ch, const string& word,
             update incorrectChars: call updateEnteredChars() function
     ***/
     bool check = 0;
-    for (auto x : word){
-    	if (x == ch) {
-            check = 1;
-		}
-	}
+    if(isCharInWord(ch,word)) check = 1;
     if (check) {
         updateSecretWord(secretWord, ch, word);
     	updateEnteredChars(ch,  correctChars);
